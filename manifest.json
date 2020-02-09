@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "My clock & Todo",
+    "description": "Simple clock and Todo list with daliy weather",
+    "version" : "1.0",
+    "permissions": [
+        "geolocation",
+        "tabs"
+        ],
+    "chrome_url_overrides":{
+        "newtab" : "main.html"
+    },
+    "browser_action":{
+        "default_icon" : "128.png"
+    },
+    "background":{
+        "scripts": ["background.js"]
+    }
+   
+}
