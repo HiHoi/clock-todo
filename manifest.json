@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "My clock & Todo",
     "description": "Simple clock and Todo list with daliy weather",
-    "version" : "1.0",
+    "version" : "1.1",
     "permissions": [
         "geolocation",
         "tabs"
