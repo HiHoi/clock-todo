@@ -13,10 +13,18 @@ body {
 .js-days h3{
     font-size: 50px;
     margin-bottom: 0;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: rgba(0, 0, 0, 0.2);
+
 }
 .js-clock h1{
     font-size: 80px;
     margin-top:0;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: rgba(0, 0, 0, 0.2);
+    
 }
 .js-toDoList{
     list-style: none;
