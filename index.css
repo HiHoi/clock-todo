@@ -83,7 +83,13 @@ td {
     border-color: black;
     border-radius: 8px;
   }
-  
+  tr td:nth-child(1){
+      color: pink;
+  }
+  tr td:nth-child(7){
+      color: skyblue;
+  }
+
   #yearMonth {
     width: 250px;
   }

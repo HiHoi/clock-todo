@@ -2,62 +2,63 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>momentum</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <title>momentum</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <div class="css-box">
-        <div class="js-days">
-            <h3>a</h3>
-        </div>
-        <div class="js-clock">
-            <h1>00:00</h1>
-        </div>
-        <form class="js-form form">
-            <input type="text" placeholder="What is your name?" />
-        </form>
-        <form class="js-toDoForm">
-            <input type="text" placeholder="Write to do" />
-        </form>
-        <ul class="js-toDoList">
+  <div class="css-box">
+    <div class="js-days">
+      <h3>a</h3>
+    </div>
+    <div class="js-clock">
+      <h1>00:00</h1>
+    </div>
+    <form class="js-form form">
+      <input type="text" placeholder="What is your name?" />
+    </form>
+    <form class="js-toDoForm">
+      <input type="text" placeholder="Write to do" />
+    </form>
+    <ul class="js-toDoList">
 
-        </ul>
-        <span class="js-weather"></span>
-        <h4 class="js-greetings greetings"></h4>
-        <script src="clock.js"></script>
-        <script src="greeting.js"></script>
-        <script src="todo.js"></script>
-        <script src="bg.js"></script>
-        <script src="weather.js"></script>
-        <script src="days.js"></script>
+    </ul>
+    <span class="js-weather"></span>
+    <h4 class="js-greetings greetings"></h4>
+    <script src="clock.js"></script>
+    <script src="greeting.js"></script>
+    <script src="todo.js"></script>
+    <script src="bg.js"></script>
+    <script src="weather.js"></script>
+    <script src="days.js"></script>
+  </div>
+  <div class="calendar">
+    <div class="js-cal">
+      <table id="cal_table">
+        <tr id="mainBar">
+          <td id="prevMonth" colspan="1">
+            <button id=prevMonth_btn><</button>
+          </td>
+          <td id="yearMonth" colspan="5">1</td>
+          <td id="nextMonth" colspan="1">
+            <button id=nextMonth_btn>></button>
+          </td>
+        </tr>
+        <tr>
+          <td>일</td>
+          <td>월</td>
+          <td>화</td>
+          <td>수</td>
+          <td>목</td>
+          <td>금</td>
+          <td>토</td>
+        </tr>
+      </table>
     </div>
-    <div class="calendar">
-        <div class="js-cal">
-            <table id="cal_table">
-              <tr id="mainBar">
-                <td id="prevMonth" colspan="1">
-                  prev
-                </td>
-                <td id="yearMonth" colspan="5">1</td>
-                <td id="nextMonth" colspan="1">
-                  next
-                </td>
-              </tr>
-              <tr>
-                <td>일</td>
-                <td>월</td>
-                <td>화</td>
-                <td>수</td>
-                <td>목</td>
-                <td>금</td>
-                <td>토</td>
-              </tr>
-            </table>
-          </div>
-          <script src="calendar.js"></script>
-    </div>
+
+    <script src="calendar.js"></script>
+  </div>
 </body>
 
 </html>

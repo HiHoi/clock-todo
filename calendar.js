@@ -1,37 +1,15 @@
 const calendarContainer = document.querySelector(".js-cal"),
   calendarTitle = document.querySelector("table");
 
-const monList = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ],
-  dayList = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
+const $prevBtn = document.querySelector('#prevMonth_btn')
+const $nextBtn = document.querySelector('#nextMonth_btn')
 
 let today = new Date();
-
 let todayYear = today.getFullYear();
 let todayMonth = today.getMonth() + 1;
 let calendar = document.getElementById("cal_table");
 
-let today_yearMonth = todayYear + "-" + todayMonth;
+let today_yearMonth = todayYear+ "년 " + todayMonth + '월';
 document.getElementById("yearMonth").innerHTML = today_yearMonth;
 
 function buildCalendar() {
@@ -63,7 +41,7 @@ function buildCalendar() {
     leftDays = 7;
   }
 }
-
+buildCalendar();
 
 function deleteCalendar() {
   while (calendar.rows.length > 2) {
@@ -82,18 +60,6 @@ function prevMonth() {
   buildCalendar();
 }
 
-function createNextBtn(){
-  const nextBtn = document.querySelector("nextMonth")
-  nextBtn.innerHTML = "<";
-  nextBtn.addEventListener("click", nextMonth)
-}
-
-function createPrevBtn(){
-  const prevBtn = document.querySelector("prevMonth")
-  prevBtn.innerHTML = ">"
-  prevBtn.addEventListener("click", prevMonth)
-}
-
 function nextMonth() {
   todayMonth += 1;
   if (todayMonth === 13) {
@@ -104,9 +70,3 @@ function nextMonth() {
   today = new Date(todayYear, todayMonth + 1);
   buildCalendar();
 }
-
-function init(){
-  buildCalendar();
-}
-
-init()
