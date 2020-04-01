@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <!--화면 왼쪽-->
   <div class="css-box">
     <div class="js-days">
       <h3>a</h3>
@@ -35,31 +36,136 @@
     <script src="weather.js"></script>
     <script src="days.js"></script>
   </div>
-  <div class="calendar">
-    <div class="js-cal">
-      <table id="cal_table">
-        <tr id="mainBar">
-          <td id="prevMonth" colspan="1">
-            <button id=prevMonth_btn><</button>
-          </td>
-          <td id="yearMonth" colspan="5">1</td>
-          <td id="nextMonth" colspan="1">
-            <button id=nextMonth_btn>></button>
-          </td>
-        </tr>
+  <!--화면 오른쪽-->
+  <div class="content-right">
+    <table id="calendar">
+      <thead>
+        <!--달력에서 년도와 버튼들-->
         <tr>
-          <td>일</td>
-          <td>월</td>
-          <td>화</td>
-          <td>수</td>
-          <td>목</td>
-          <td>금</td>
-          <td>토</td>
+          <td>
+            <button id="prev" onclick= prev()>
+              &#60;
+            </button>
+          </td>
+          <td align="center" id="current-year-month" colspan="5"></td>
+          <td>
+            <button id="next" onclick= next()>
+              &#62;
+            </button>
+          </td>
         </tr>
-      </table>
-    </div>
+        <!--달력의 요일-->
+        <tr>
+          <td class="sun" align="center">Sun</td>
+          <td align="center">Mon</td>
+          <td align="center">Tue</td>
+          <td align="center">Wed</td>
+          <td align="center">Thu</td>
+          <td align="center">Fri</td>
+          <td class="sat" align="center">Sat</td>
+        </tr>
+      </thead>
+      <!--달력 본체-->
+      <tbody id="calendar-body" class="calendar-body"></tbody>
+    </table>
+  </div>
+  </div>
 
-    <script src="calendar.js"></script>
+  <script>
+    //변수 설정(제목, 달력, 시간 등)
+    var currentTitle = document.getElementById('current-year-month');
+    var calendarBody = document.getElementById('calendar-body');
+    var today = new Date();
+    var first = new Date(today.getFullYear(), today.getMonth(), 1);
+    var monthList = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+    var leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //윤년
+    var notLeapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    //월의 총 일수 저장
+    var pageFirst = first;
+    var pageYear;
+    //윤년파악하기
+    if (first.getFullYear() % 4 === 0) {
+      pageYear = leapYear;
+    } else {
+      pageYear = notLeapYear;
+    }
+
+    //달력 만들기
+    function showCalendar() {
+      let monthCnt = 100;
+      let cnt = 1;
+      //주 단위(최대 6주)
+      for (var i = 0; i < 6; i++) {
+        var $tr = document.createElement('tr');
+        $tr.setAttribute('id', monthCnt);
+        //일주일(7일)
+        for (var j = 0; j < 7; j++) {
+          if ((i === 0 && j < first.getDay()) || cnt > pageYear[first.getMonth()]) {
+            var $td = document.createElement('td');
+            $tr.appendChild($td);
+          } else {
+            var $td = document.createElement('td');
+            $td.textContent = cnt;
+            $td.setAttribute('id', cnt);
+            $tr.appendChild($td);
+            cnt++;
+          }
+        }
+        monthCnt++;
+        calendarBody.appendChild($tr);
+      }
+      currentTitle.innerHTML = first.getFullYear() + '&nbsp;&nbsp;&nbsp;&nbsp;' + monthList[first.getMonth()];
+    }
+    showCalendar();
+
+    function removeCalendar() {
+      let catchTr = 100;
+      for (var i = 100; i < 106; i++) {
+        var $tr = document.getElementById(catchTr);
+        $tr.remove();
+        catchTr++;
+      }
+    }
+    //다음날 이전달로 이동
+
+    function prev() {
+      if (pageFirst.getMonth() === 1) {
+        pageFirst = new Date(first.getFullYear() - 1, 12, 1);
+        first = pageFirst;
+        if (first.getFullYear() % 4 === 0) {
+          pageYear = leapYear;
+        } else {
+          pageYear = notLeapYear;
+        }
+      } else {
+        pageFirst = new Date(first.getFullYear(), first.getMonth() - 1, 1);
+        first = pageFirst;
+      }
+      today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+      currentTitle.innerHTML = first.getFullYear() + '&nbsp;&nbsp;&nbsp;&nbsp;' + monthList[first.getMonth()];
+      removeCalendar();
+      showCalendar();
+    }
+
+    function next() {
+      if (pageFirst.getMonth() === 12) {
+        pageFirst = new Date(first.getFullYear() + 1, 1, 1);
+        first = pageFirst;
+        if (first.getFullYear() % 4 === 0) {
+          pageYear = leapYear;
+        } else {
+          pageYear = notLeapYear;
+        }
+      } else {
+        pageFirst = new Date(first.getFullYear(), first.getMonth() + 1, 1);
+        first = pageFirst;
+      }
+      today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+      currentTitle.innerHTML = first.getFullYear() + '&nbsp;&nbsp;&nbsp;&nbsp;' + monthList[first.getMonth()];
+      removeCalendar();
+      showCalendar();
+    }
+  </script>
   </div>
 </body>
 
