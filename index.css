@@ -18,18 +18,18 @@ body {
     margin: 5% auto;
     margin-left: 5%;
     margin-top: 11%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .js-days h3{
     font-size: 40px;
     margin-bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 .js-clock h1{
     font-size: 60px;
     margin-top:0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     
 }
 .js-toDoList{
